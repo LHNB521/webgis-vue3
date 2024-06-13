@@ -32,7 +32,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           IconsResolver({}),
         ],
         vueTemplate: true, // 是否在 vue 模板中自动导入
-        dts: path.resolve(pathSrc, 'typings', 'auto-imports.d.ts'), // 指定自动导入函数TS类型声明文件路径
+        dts: path.resolve(pathSrc, 'types', 'auto-imports.d.ts'), // 指定自动导入函数TS类型声明文件路径
       }),
       Components({
         resolvers: [
@@ -45,7 +45,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         ],
         // 指定自定义组件位置(默认:src/components)
         dirs: ['src/components', 'src/**/components'],
-        dts: path.resolve(pathSrc, 'typings', 'components.d.ts'), // 指定自动导入组件TS类型声明文件路径
+        dts: path.resolve(pathSrc, 'types', 'components.d.ts'), // 指定自动导入组件TS类型声明文件路径
       }),
       Icons({
         // 自动安装图标库
