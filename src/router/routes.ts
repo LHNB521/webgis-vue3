@@ -17,4 +17,8 @@ export const constantRoutes: RouteRecordRaw[] = [
     path: '/rem',
     component: () => import('@/views/rem/index.vue'),
   },
+  {
+    path: '/cesium',
+    component: () => import('@/views/cesium/index.vue'),
+  },
 ]

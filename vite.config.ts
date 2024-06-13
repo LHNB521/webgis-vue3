@@ -8,6 +8,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 import { viteMockServe } from 'vite-plugin-mock'
+import cesium from 'vite-plugin-cesium'
 
 const pathSrc = path.resolve(__dirname, 'src')
 
@@ -17,6 +18,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   return {
     plugins: [
       vue(),
+      cesium(),
       eslintPlugin(),
       AutoImport({
         // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
