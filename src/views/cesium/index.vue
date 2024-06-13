@@ -26,9 +26,10 @@
 
 <script setup lang="ts">
 import * as Cesium from 'cesium'
-
 import { cesiumToken } from './config'
+import { useViewerStore } from '@/store'
 
+const viewerStore = useViewerStore()
 const drawer = ref(false)
 
 const init = () => {
@@ -36,7 +37,7 @@ const init = () => {
     infoBox: false,
     timeline: false, // 是否显示时间线控件
   })
-  console.log(viewer)
+  viewerStore.setViewer(viewer)
 }
 onMounted(() => {
   Cesium.Ion.defaultAccessToken = cesiumToken

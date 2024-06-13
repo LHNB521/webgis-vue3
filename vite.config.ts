@@ -91,5 +91,8 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     optimizeDeps: {
       include: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
     },
+    worker: {
+      format: 'es',
+    },
   }
 })
