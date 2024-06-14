@@ -1,20 +1,23 @@
 <template>
   <el-container class="aside">
     <el-header class="aside-header">LOGO</el-header>
-    <el-main class="aside-main">
+    <el-main class="aside-main" :default-openeds="defaultOpenArr">
       <el-menu active-text-color="#ffd04b" background-color="transparent" text-color="#8A8C91">
-        <el-menu-item index="2">
-          <el-icon><icon-menu /></el-icon>
-          <span>Navigator Two</span>
-        </el-menu-item>
-        <el-menu-item index="3" disabled>
-          <el-icon><document /></el-icon>
-          <span>Navigator Three</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <el-icon><setting /></el-icon>
-          <span>Navigator Four</span>
-        </el-menu-item>
+        <el-sub-menu v-for="item in cesiumRoutes" :key="item.path" :index="item.path">
+          <template #title>
+            <span>{{ item.meta.title }}</span>
+          </template>
+          <template v-if="item.children">
+            <el-menu-item
+              v-for="childrenItem in item.children"
+              :key="childrenItem.path"
+              :index="childrenItem.path"
+              @click="linkTo(childrenItem.path)"
+            >
+              {{ childrenItem.meta.title }}
+            </el-menu-item>
+          </template>
+        </el-sub-menu>
       </el-menu>
     </el-main>
     <el-footer class="aside-footer">
@@ -23,7 +26,16 @@
   </el-container>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import router from '@/router'
+import { cesiumRoutes } from '@/router/routes'
+
+const defaultOpenArr = cesiumRoutes.map((item: any) => item.path)
+
+const linkTo = (path: any) => {
+  router.push({ path })
+}
+</script>
 
 <style scoped lang="scss">
 .aside {

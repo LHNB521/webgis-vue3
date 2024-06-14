@@ -7,8 +7,8 @@
     <Card w="300px" h="300px" bg="#fff" route="/cesium">
       <div class="card-content">cesium</div>
     </Card>
-    <Card w="300px" h="300px" bg="#ccc">
-      <div class="card-content">cesium</div>
+    <Card w="300px" h="300px" bg="#ccc" route="/openlayers">
+      <div class="card-content">openlayers</div>
     </Card>
   </div>
 </template>
