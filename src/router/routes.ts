@@ -1,24 +1,23 @@
 import { RouteRecordRaw } from 'vue-router'
+const Layout = () => import('@/layout/index.vue')
 
 export const constantRoutes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    redirect: '/home',
-  },
   {
     path: '/login',
     component: () => import('@/views/login/index.vue'),
   },
   {
-    path: '/home',
+    path: '/',
     component: () => import('@/views/home/index.vue'),
   },
   {
-    path: '/rem',
-    component: () => import('@/views/rem/index.vue'),
-  },
-  {
     path: '/cesium',
-    component: () => import('@/views/cesium/index.vue'),
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/cesium/index.vue'),
+      },
+    ],
   },
 ]

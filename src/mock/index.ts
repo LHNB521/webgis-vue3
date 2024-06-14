@@ -1,4 +1,4 @@
-import Mock from 'mockjs'
-import user from './user'
+// import Mock from 'mockjs'
+// import user from './user'
 
-Mock.mock('/api/login', user.login)
+// Mock.mock('/api/login', user.login)

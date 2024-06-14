@@ -33,12 +33,13 @@
   overflow: hidden;
   color: #c0c0c0;
   background: #161a23;
-  border-radius: 0 10px 10px 0;
+  border-right: #5c5f65 1px solid;
 
   .aside-header {
     width: 100%;
     height: 72px;
     background: #2d2f39;
+    border-bottom: #5c5f65 1px solid;
   }
 
   .aside-main {
@@ -61,6 +62,7 @@
     width: 100%;
     height: 88px;
     background: #2d2f39;
+    border-top: #5c5f65 1px solid;
   }
 }
 </style>

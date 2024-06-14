@@ -1,13 +1,13 @@
 <template>
   <div class="cesium-app">
-    <el-button
+    <!-- <el-button
       type="primary"
       class="drawer-button"
       :class="drawer ? 'drawer-button-move' : ''"
       @click="drawer = !drawer"
     >
       {{ drawer ? '关闭' : '菜单' }}
-    </el-button>
+    </el-button> -->
 
     <div id="cesium"></div>
   </div>
@@ -26,18 +26,34 @@
 
 <script setup lang="ts">
 import * as Cesium from 'cesium'
-import { cesiumToken } from './config'
+import { cesiumOptions, cesiumToken } from './config'
 import { useViewerStore } from '@/store'
+import { skyBox, ImageryProviderOptions, handler } from './settings'
 
 const viewerStore = useViewerStore()
 const drawer = ref(false)
 
+// 初始化3D地球
 const init = () => {
   const viewer = new Cesium.Viewer('cesium', {
-    infoBox: false,
-    timeline: false, // 是否显示时间线控件
-  })
-  viewerStore.setViewer(viewer)
+    ...cesiumOptions,
+  }) as any
+
+  viewerStore.viewer = viewer
+  // 去除logo
+  viewer.cesiumWidget.creditContainer.style.display = 'none'
+  // 显示帧率
+  viewer.scene.debugShowFramesPerSecond = true
+  viewer.scene.globe.depthTestAgainstTerrain = true
+
+  // 外天空盒
+  viewer.scene.skyBox = new Cesium.SkyBox(skyBox)
+
+  // 天地图影像
+  viewer.imageryLayers.removeAll()
+  viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider(ImageryProviderOptions))
+
+  handler()
 }
 onMounted(() => {
   Cesium.Ion.defaultAccessToken = cesiumToken

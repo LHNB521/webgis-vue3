@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
 
-export const useViewerStore = defineStore('viewer', () => {
-  // 初始化cesium viewer
-  const viewer = ref<any>(null)
-
-  function setViewer(viewer: any) {
-    viewer.value = viewer
-  }
-
-  return { viewer, setViewer }
+// 定义store模块
+export const useViewerStore = defineStore('viewer', {
+  state: () => ({
+    viewer: null as any,
+  }),
+  actions: {
+    async setViewer(e: any) {
+      this.viewer = e
+    },
+  },
 })
