@@ -38,9 +38,11 @@ export default [
       'vue/multi-word-component-names': ['off'], // 组件名应该多个词组成
       'vue/no-mutating-props': 'warn', // props 参数应该不能直接修改
       '@typescript-eslint/no-explicit-any': ['off'],
+      'vue/no-v-html': ['off'],
+      'vue/require-explicit-emits': ['off'],
     },
   },
   {
-    ignores: ['dist/*'],
+    ignores: ['dist/*', 'public/*', 'src/typings/*.d.ts'],
   },
 ]

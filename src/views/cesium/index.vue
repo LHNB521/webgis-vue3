@@ -14,9 +14,9 @@
   <div class="drawer-parent">
     <el-drawer v-model="drawer" class="drawer" :modal="false" :show-close="false" direction="ltr">
       <template #header>
-        <div class="header"></div>
+        <div class="header">LOGO</div>
       </template>
-      <span>Hi there!</span>
+      <div>Hi there!</div>
       <template #footer>
         <div class="footer"></div>
       </template>
@@ -103,8 +103,12 @@ onMounted(() => {
   }
 
   .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 72px;
+    color: #fff;
     background: #2d2f39;
     border-bottom: #5c5f65 1px solid;
   }
