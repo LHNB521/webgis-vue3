@@ -21,7 +21,7 @@
       </el-menu>
     </el-main>
     <el-footer class="aside-footer">
-      <el-button type="primary" size="mini">Button</el-button>
+      <el-button type="primary">Button</el-button>
     </el-footer>
   </el-container>
 </template>

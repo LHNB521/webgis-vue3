@@ -1,5 +1,24 @@
 import { RouteRecordRaw } from 'vue-router'
 const Layout = () => import('@/layout/index.vue')
+const EmptyRouterView = () => import('@/views/routerViews/emptyRouterViews.vue')
+
+// cesium路由
+export const cesiumRoutes: any = [
+  {
+    path: '/cesium/camera',
+    component: EmptyRouterView,
+    meta: { title: '相机' },
+    children: [
+      {
+        path: '/cesium/camera/fly',
+        meta: {
+          title: '飞行',
+        },
+        component: () => import('@/views/cesium/camera/fly.vue'),
+      },
+    ],
+  },
+]
 
 export const constantRoutes: RouteRecordRaw[] = [
   {
@@ -27,24 +46,6 @@ export const constantRoutes: RouteRecordRaw[] = [
       {
         path: '',
         component: () => import('@/views/openlayers/index.vue'),
-      },
-    ],
-  },
-]
-
-// cesium路由
-export const cesiumRoutes: any = [
-  {
-    path: '/camera',
-    component: Layout,
-    meta: { title: '相机' },
-    children: [
-      {
-        path: '/camera/fly',
-        meta: {
-          title: '飞行',
-        },
-        component: () => import('@/views/cesium/camera/fly.vue'),
       },
     ],
   },

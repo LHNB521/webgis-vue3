@@ -8,7 +8,7 @@
     >
       {{ drawer ? '关闭' : '菜单' }}
     </el-button> -->
-
+    <router-view />
     <div id="cesium"></div>
   </div>
   <div class="drawer-parent">
@@ -26,9 +26,9 @@
 
 <script setup lang="ts">
 import * as Cesium from 'cesium'
-import { cesiumOptions, cesiumToken } from './config'
+import { cesiumOptions, cesiumToken } from './utils/config'
 import { useViewerStore } from '@/store'
-import { skyBox, ImageryProviderOptions, handler } from './settings'
+import { skyBox, ImageryProviderOptions, handler } from './utils/settings'
 
 const viewerStore = useViewerStore()
 const drawer = ref(false)
