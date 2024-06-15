@@ -4,22 +4,24 @@
       <div class="title">基于Vue3全功gis项目</div>
       <div class="desc">cesium and all</div>
     </div>
-    <Card w="300px" h="300px" bg="#fff" route="/cesium">
-      <div class="card-content">cesium</div>
-    </Card>
-    <Card w="300px" h="300px" bg="#ccc" route="/openlayers">
-      <div class="card-content">openlayers</div>
-    </Card>
+    <div class="box">
+      <Ponint class-name="item" />
+      <Card class="item" w="300px" h="300px" bg="#fff" route="/cesium">
+        <div class="card-content">cesium</div>
+      </Card>
+      <Card class="item" w="300px" h="300px" bg="#fff" route="/openlayers">
+        <div class="card-content">openlayers</div>
+      </Card>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import Card from '@/components/card/index.vue'
+import Ponint from '@/components/point/index.vue'
 </script>
 <style lang="scss" scoped>
 .home {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 20px;
+  position: relative;
   height: calc(100vh - 40px);
   padding: 20px;
   overflow: auto;
@@ -43,5 +45,12 @@ import Card from '@/components/card/index.vue'
   .desc {
     font-size: 40px;
   }
+}
+
+.box {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 40px;
 }
 </style>

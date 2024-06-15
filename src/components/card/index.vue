@@ -45,10 +45,10 @@ const handleRoter = () => {
   border: 0 solid !important;
 }
 
-.card:hover {
-  background: hsl(from color h s l);
-  transform: scale(1.1);
-}
+// .card:hover {
+//  background: hsl(from color h s l);
+//  transform: scale(1.1);
+// }
 
 /* stylelint-disable-next-line selector-class-pattern */
 :deep(.el-card__body) {
