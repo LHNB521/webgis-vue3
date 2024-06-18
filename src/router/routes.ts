@@ -1,5 +1,4 @@
 import { RouteRecordRaw } from 'vue-router'
-const Layout = () => import('@/layout/index.vue')
 const EmptyRouterView = () => import('@/views/routerViews/emptyRouterViews.vue')
 
 // cesium路由
@@ -11,16 +10,16 @@ export const cesiumRoutes: any = [
     children: [
       {
         path: '/cesium/camera/fly',
+        component: () => import('@/views/cesium/camera/fly.vue'),
         meta: {
           title: '飞行',
         },
-        component: () => import('@/views/cesium/camera/fly.vue'),
       },
     ],
   },
 ]
 
-export const constantRoutes: RouteRecordRaw[] = [
+export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('@/views/home/index.vue'),
@@ -31,22 +30,12 @@ export const constantRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/cesium',
-    component: Layout,
-    children: [
-      {
-        path: '',
-        component: () => import('@/views/cesium/index.vue'),
-      },
-    ],
+    component: () => import('@/views/cesium/index.vue'),
+    children: cesiumRoutes,
   },
   {
     path: '/openlayers',
-    component: Layout,
-    children: [
-      {
-        path: '',
-        component: () => import('@/views/openlayers/index.vue'),
-      },
-    ],
+    component: () => import('@/views/openlayers/index.vue'),
+    children: [],
   },
 ]

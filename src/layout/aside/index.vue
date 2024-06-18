@@ -2,7 +2,13 @@
   <el-container class="aside">
     <el-header class="aside-header">LOGO</el-header>
     <el-main class="aside-main" :default-openeds="defaultOpenArr">
-      <el-menu active-text-color="#ffd04b" background-color="transparent" text-color="#8A8C91">
+      <el-menu
+        active-text-color="#ffd04b"
+        background-color="transparent"
+        text-color="#8A8C91"
+        :default-active="defaultRoute"
+        router
+      >
         <el-sub-menu v-for="item in cesiumRoutes" :key="item.path" :index="item.path">
           <template #title>
             <span>{{ item.meta.title }}</span>
@@ -12,7 +18,7 @@
               v-for="childrenItem in item.children"
               :key="childrenItem.path"
               :index="childrenItem.path"
-              @click="linkTo(childrenItem.path)"
+              @click="linkTo"
             >
               {{ childrenItem.meta.title }}
             </el-menu-item>
@@ -30,11 +36,20 @@
 import router from '@/router'
 import { cesiumRoutes } from '@/router/routes'
 
+const defaultRoute = ref('')
+
 const defaultOpenArr = cesiumRoutes.map((item: any) => item.path)
 
-const linkTo = (path: any) => {
-  router.push({ path })
+const linkTo = (e: any) => {
+  console.log(e)
+  // router.push({
+  //   name,
+  // })
 }
+onMounted(() => {
+  console.log(router.currentRoute.value.path)
+  defaultRoute.value = router.currentRoute.value.path
+})
 </script>
 
 <style scoped lang="scss">

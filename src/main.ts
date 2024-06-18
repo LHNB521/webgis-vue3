@@ -6,7 +6,7 @@ import router from './router'
 
 // import { setupPermission } from './plugins/permission'
 
-import './mock'
+// import './mock'
 
 const app = createApp(App)
 
