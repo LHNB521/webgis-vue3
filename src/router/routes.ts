@@ -19,6 +19,24 @@ export const cesiumRoutes: any = [
   },
 ]
 
+// openLayers路由
+export const openLayersRoutes: any = [
+  {
+    path: '/openlayers/camera',
+    component: EmptyRouterView,
+    meta: { title: '相机' },
+    children: [
+      {
+        path: '/openlayers/camera/fly',
+        component: () => import('@/views/cesium/camera/fly.vue'),
+        meta: {
+          title: '飞行',
+        },
+      },
+    ],
+  },
+]
+
 export const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -36,6 +54,6 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/openlayers',
     component: () => import('@/views/openlayers/index.vue'),
-    children: [],
+    children: openLayersRoutes,
   },
 ]

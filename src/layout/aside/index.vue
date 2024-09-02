@@ -47,7 +47,6 @@ const linkTo = (e: any) => {
   // })
 }
 onMounted(() => {
-  console.log(router.currentRoute.value.path)
   defaultRoute.value = router.currentRoute.value.path
 })
 </script>
