@@ -2,6 +2,8 @@ import 'ol/ol.css'
 import { View, defaults, Map } from './import.ts'
 import { createTileLayer } from './createLayers.ts'
 
+export * from './mapOn.ts'
+
 interface propIC {
   domId: HTMLElement | undefined
 }
@@ -14,9 +16,6 @@ export default class olMap {
    */
   constructor(props: propIC) {
     this.domId = props.domId // 保存传入的 DOM 元素
-    if (this.domId) {
-      this.initMap() // 如果 DOM 元素存在，初始化地图
-    }
   }
   /**
    * 初始化地图
