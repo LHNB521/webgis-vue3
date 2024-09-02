@@ -1,5 +1,6 @@
 import { Extent, getProjection, TileLayer, WMTS, WMTSTileGrid } from './import'
-
+// 天地图token
+import { TDTTOEN } from '../../../private'
 /**
  * 初始化和配置 WMTS 瓦片网格
  * @returns WMTSTileGrid - 返回配置好的 WMTS 瓦片网格
@@ -32,7 +33,7 @@ export function wmtsTileGrid(): WMTSTileGrid {
 
 // 配置天地图 WMTS 图层的选项
 const TDTLayerOptions: any = {
-  url: 'http://t0.tianditu.gov.cn/img_c/wmts?tk=你的token', // WMTS 服务的 URL
+  url: 'http://t0.tianditu.gov.cn/img_c/wmts?tk=' + TDTTOEN, // WMTS 服务的 URL
   layer: 'img', // 指定要加载的图层名称
   matrixSet: 'c', // 使用的矩阵集（如“c”代表的可能是中国区域的坐标系）
   format: 'tiles', // 指定瓦片的格式
