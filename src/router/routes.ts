@@ -1,11 +1,16 @@
 import { RouteRecordRaw } from 'vue-router'
+const CesiunVue = () => import('@/views/cesium/index.vue')
 const EmptyRouterView = () => import('@/views/routerViews/emptyRouterViews.vue')
 
 // cesium路由
 export const cesiumRoutes: any = [
   {
-    path: '/cesium/camera',
-    component: EmptyRouterView,
+    path: '/cesium/eye',
+    meta: { title: '鹰眼' },
+    component: () => import('@/views/cesium/eye/index.vue'),
+  },
+  {
+    path: '',
     meta: { title: '相机' },
     children: [
       {
@@ -13,6 +18,19 @@ export const cesiumRoutes: any = [
         component: () => import('@/views/cesium/camera/fly.vue'),
         meta: {
           title: '飞行',
+        },
+      },
+    ],
+  },
+  {
+    path: '',
+    meta: { title: '卫星' },
+    children: [
+      {
+        path: '/cesium/satellite/index',
+        component: () => import('@/views/cesium/satellite/index.vue'),
+        meta: {
+          title: '卫星1',
         },
       },
     ],
@@ -48,7 +66,7 @@ export const routes: RouteRecordRaw[] = [
   },
   {
     path: '/cesium',
-    component: () => import('@/views/cesium/index.vue'),
+    component: CesiunVue,
     children: cesiumRoutes,
   },
   {

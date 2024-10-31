@@ -9,11 +9,11 @@
         :default-active="defaultRoute"
         router
       >
-        <el-sub-menu v-for="item in cesiumRoutes" :key="item.path" :index="item.path">
-          <template #title>
-            <span>{{ item.meta.title }}</span>
-          </template>
-          <template v-if="item.children">
+        <template v-for="item in cesiumRoutes" :key="item.meta.title">
+          <el-sub-menu v-if="item.children" :index="item.meta.title">
+            <template #title>
+              <span>{{ item.meta.title }}</span>
+            </template>
             <el-menu-item
               v-for="childrenItem in item.children"
               :key="childrenItem.path"
@@ -22,8 +22,11 @@
             >
               {{ childrenItem.meta.title }}
             </el-menu-item>
-          </template>
-        </el-sub-menu>
+          </el-sub-menu>
+          <el-menu-item v-else :index="item.path" @click="linkTo">
+            {{ item.meta.title }}
+          </el-menu-item>
+        </template>
       </el-menu>
     </el-main>
     <el-footer class="aside-footer">
@@ -41,7 +44,6 @@ const defaultRoute = ref('')
 const defaultOpenArr = cesiumRoutes.map((item: any) => item.path)
 
 const linkTo = (e: any) => {
-  console.log(e)
   // router.push({
   //   name,
   // })
