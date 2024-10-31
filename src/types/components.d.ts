@@ -8,8 +8,10 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Card: typeof import('./../components/card/index.vue')['default']
+    Dialog: typeof import('./../components/dialog/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCard: typeof import('element-plus/es')['ElCard']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElFooter: typeof import('element-plus/es')['ElFooter']
