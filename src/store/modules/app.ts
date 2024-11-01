@@ -8,6 +8,7 @@ import { defineStore } from 'pinia'
 export const useAppStore = defineStore('app', () => {
   const language = useStorage('language', defaultSettings.language)
   const size = useStorage('size', defaultSettings.size)
+  const isLoading = ref(false)
 
   /**
    * 根据语言标识读取对应的语言包
@@ -22,6 +23,10 @@ export const useAppStore = defineStore('app', () => {
   function changeSize(val: string) {
     size.value = val
   }
+  function setLoading(val: boolean) {
+    console.log(val)
+    isLoading.value = val
+  }
 
   return {
     language,
@@ -29,6 +34,8 @@ export const useAppStore = defineStore('app', () => {
     changeLanguage,
     changeSize,
     size,
+    isLoading,
+    setLoading,
   }
 })
 
