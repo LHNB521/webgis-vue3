@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 // 定义store模块
 export const useViewerStore = defineStore('viewer', () => {
-  const viewer = ref(null)
+  const viewer = ref<any>(null)
   const setViewer = (v: any) => {
     viewer.value = v
   }
