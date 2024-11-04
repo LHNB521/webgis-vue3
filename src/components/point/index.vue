@@ -10,8 +10,8 @@ interface Props {
 const props = defineProps<Props>()
 // 鼠标经过元素时，指针跟随
 function pointer() {
-  const items = document.querySelectorAll(`.${props.className}`)
-  const pointer = document.querySelector('.pointer')
+  const items: any = document.querySelectorAll(`.${props.className}`)
+  const pointer: any = document.querySelector('.pointer')
   for (const i of items) {
     i.onmouseenter = () => {
       pointer.style.setProperty('--s', `${i.clientWidth}px`)

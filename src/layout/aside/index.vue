@@ -43,7 +43,7 @@ const defaultRoute = ref('')
 
 const defaultOpenArr = cesiumRoutes.map((item: any) => item.path)
 
-const linkTo = (e: any) => {
+const linkTo = () => {
   // router.push({
   //   name,
   // })

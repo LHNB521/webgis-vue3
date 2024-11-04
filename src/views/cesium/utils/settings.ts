@@ -1,5 +1,4 @@
 import * as Cesium from 'cesium'
-import { useViewerStore } from '@/store'
 
 import px1 from '@/assets/images/Standard-Cube-Map/px1.png'
 import nx1 from '@/assets/images/Standard-Cube-Map/nx1.png'
@@ -7,7 +6,6 @@ import pz from '@/assets/images/Standard-Cube-Map/pz.png'
 import nz1 from '@/assets/images/Standard-Cube-Map/nz1.png'
 import py from '@/assets/images/Standard-Cube-Map/py.png'
 import ny1 from '@/assets/images/Standard-Cube-Map/ny1.png'
-const viewerStore = useViewerStore()
 
 // 外天空盒
 export const skyBox = {

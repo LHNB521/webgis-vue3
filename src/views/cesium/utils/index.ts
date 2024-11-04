@@ -28,7 +28,7 @@ export default class initMap {
     this.removeLogo()
     this.showZL()
     this.addSkyBox()
-    this.addTianDiTu()
+    // this.addTianDiTu()
   }
 
   removeLogo() {
