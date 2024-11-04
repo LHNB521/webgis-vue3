@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import Satellite from '../utils/satellite'
+const map = ref()
 nextTick(() => {
-  new Satellite()
+  map.value = new Satellite()
+})
+onBeforeUnmount(() => {
+  map.value.remove()
 })
 </script>

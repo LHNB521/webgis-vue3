@@ -1,7 +1,11 @@
 <script name="eye" setup lang="ts">
 import addEye from '../utils/addEye'
+const map = ref()
 nextTick(() => {
-  new addEye()
+  map.value = new addEye()
+})
+onBeforeUnmount(() => {
+  map.value.remove()
 })
 </script>
 <template>

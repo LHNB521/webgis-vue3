@@ -11,7 +11,6 @@
 import initMap from './utils/index'
 import onMap from './utils/onMap'
 import Layout from '@/layout/index.vue'
-
 onMounted(() => {
   new initMap({
     id: 'cesium',

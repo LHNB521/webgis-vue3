@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import flyTo from '../utils/flyTo'
+import SetZoom from '../utils/setZoom'
 
 nextTick(() => {
   new flyTo()
 })
 onBeforeUnmount(() => {
-  // viewerStore.getViewer().destroy()
+  new SetZoom().flyTo()
 })
 </script>

@@ -32,8 +32,9 @@ export default class Satellite {
     this.viewer.clock.stopTime = this.stop.clone()
     this.viewer.clock.currentTime = this.start.clone()
     this.viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP //循环结束时
+    this.viewer.clock.shouldAnimate = true
     //时间变化来控制速度 // 时间速率，数字越大时间过的越快
-    this.viewer.clock.multiplier = 10
+    this.viewer.clock.multiplier = 15
   }
   createTrack() {
     // 动态控制模型的位置，达到模型沿轨迹平滑移动的目的 后面优化卫星轨迹会用到这个
@@ -88,5 +89,9 @@ export default class Satellite {
     })
     // 可选：设置相机跟随卫星
     // this.viewer.trackedEntity = this.satelliteEntity
+  }
+  remove() {
+    this.viewer.entities.remove(this.satelliteEntity)
+    this.viewer.entities.removeById('line')
   }
 }

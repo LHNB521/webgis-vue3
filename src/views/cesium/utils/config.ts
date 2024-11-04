@@ -3,7 +3,7 @@ export const cesiumToken =
 
 export const cesiumOptions = {
   // shadows: true,
-  animation: true,
+  animation: false,
   timeline: false,
   baseLayerPicker: false,
   fullscreenButton: false,
