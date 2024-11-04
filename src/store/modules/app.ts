@@ -24,7 +24,6 @@ export const useAppStore = defineStore('app', () => {
     size.value = val
   }
   function setLoading(val: boolean) {
-    console.log(val)
     isLoading.value = val
   }
 

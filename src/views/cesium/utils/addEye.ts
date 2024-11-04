@@ -1,13 +1,13 @@
 import * as Cesium from 'cesium'
 import { ImageryProviderOptions } from './settings'
 
-import { useViewerStore } from '@/store'
+import { useViewerStore, CesiumViewer } from '@/store'
 import { cesiumOptions } from './config'
 
 const viewerStore = useViewerStore()
 
 export default class addEye {
-  viewer: any
+  viewer: CesiumViewer['viewer']
 
   constructor() {
     this.viewer = viewerStore.getViewer()

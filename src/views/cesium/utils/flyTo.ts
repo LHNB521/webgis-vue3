@@ -1,9 +1,9 @@
 import * as Cesium from 'cesium'
-import { useViewerStore } from '@/store'
+import { useViewerStore, CesiumViewer } from '@/store'
 const viewerStore = useViewerStore()
 
 export default class flyTo {
-  viewer: any
+  viewer: CesiumViewer['viewer']
   constructor() {
     this.viewer = viewerStore.getViewer()
     if (this.viewer) {

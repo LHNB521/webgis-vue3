@@ -56,19 +56,3 @@ export const ImageryProviderOptions = {
   ],
   maximumLevel: 19,
 }
-
-// 监听点击事件，拾取坐标
-export const handler = () => {
-  const handler = new Cesium.ScreenSpaceEventHandler(viewerStore.viewer.scene.canvas)
-  handler.setInputAction((e: any) => {
-    console.log(e)
-    const clickPosition = viewerStore.viewer.scene.camera.pickEllipsoid(e.position)
-    const randiansPos = Cesium.Cartographic.fromCartesian(clickPosition)
-    console.log(
-      '经度：' +
-        Cesium.Math.toDegrees(randiansPos.longitude) +
-        ', 纬度：' +
-        Cesium.Math.toDegrees(randiansPos.latitude),
-    )
-  }, Cesium.ScreenSpaceEventType.LEFT_CLICK)
-}

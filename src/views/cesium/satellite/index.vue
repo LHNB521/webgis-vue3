@@ -1,3 +1,6 @@
 <script setup lang="ts">
-console.log('---')
+import Satellite from '../utils/satellite'
+nextTick(() => {
+  new Satellite()
+})
 </script>

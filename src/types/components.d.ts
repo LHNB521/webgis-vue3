@@ -19,7 +19,6 @@ declare module 'vue' {
     ElMain: typeof import('element-plus/es')['ElMain']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
-    ElSpinner: typeof import('element-plus/es')['ElSpinner']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     Loading: typeof import('./../components/loading/index.vue')['default']
     Point: typeof import('./../components/point/index.vue')['default']
