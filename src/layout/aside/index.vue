@@ -1,6 +1,9 @@
 <template>
   <el-container class="aside">
-    <el-header class="aside-header">LOGO</el-header>
+    <el-header class="aside-header" @click="handleClose" @mouseenter="handleMouseenter" @mouseleave="handleMouseleave">
+      <span>Cesium</span>
+      <span v-if="isCollapse" class="aside-header-text">返回首页</span>
+    </el-header>
     <el-main class="aside-main" :default-openeds="defaultOpenArr">
       <el-menu
         active-text-color="#ffd04b"
@@ -48,6 +51,19 @@ const linkTo = () => {
   //   name,
   // })
 }
+const handleClose = () => {
+  router.push({
+    path: '/',
+  })
+}
+
+const isCollapse = ref(false)
+const handleMouseenter = () => {
+  isCollapse.value = true
+}
+const handleMouseleave = () => {
+  isCollapse.value = false
+}
 onMounted(() => {
   defaultRoute.value = router.currentRoute.value.path
 })
@@ -64,10 +80,26 @@ onMounted(() => {
   border-right: #5c5f65 1px solid;
 
   .aside-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 72px;
+    font-size: 3rem;
+    cursor: pointer;
     background: #2d2f39;
     border-bottom: #5c5f65 1px solid;
+
+    .aside-header-text {
+      position: absolute;
+      right: 0;
+      font-size: 1rem;
+      color: red;
+
+      &:hover {
+        color: red;
+      }
+    }
   }
 
   .aside-main {

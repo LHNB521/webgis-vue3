@@ -12,6 +12,15 @@
       <Card class="item" w="300px" h="300px" bg="#fff" route="/openlayers">
         <div class="card-content">openlayers</div>
       </Card>
+      <Card class="item" w="300px" h="300px" bg="#fff" route="/openlayers">
+        <div class="card-content">openlayers</div>
+      </Card>
+      <Card class="item" w="300px" h="300px" bg="#fff" route="/openlayers">
+        <div class="card-content">openlayers</div>
+      </Card>
+      <Card class="item" w="300px" h="300px" bg="#fff" route="/openlayers">
+        <div class="card-content">openlayers</div>
+      </Card>
     </div>
     <a href="https://beian.miit.gov.cn/#/" target="_blank" class="footer"> ICP主体备案号: 豫ICP备2021007222号 </a>
   </div>
@@ -23,9 +32,9 @@ import Ponint from '@/components/point/index.vue'
 <style lang="scss" scoped>
 .home {
   position: relative;
-  height: calc(100vh - 40px);
-  padding: 20px;
-  overflow: auto;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
   background: #030914;
 }
 
@@ -33,32 +42,47 @@ import Ponint from '@/components/point/index.vue'
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
-  height: 40%;
+  width: 100%;
+  height: 40vh;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: #fff;
   text-align: center;
 
   .title {
-    font-size: 50px;
+    font-size: clamp(1.5rem, 7vw, 3.5rem);
   }
 
   .desc {
-    font-size: 40px;
+    font-size: clamp(1rem, 7vw, 2.5rem);
   }
 }
 
 .box {
   position: relative;
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
   gap: 40px;
+  width: calc(100% - 60px);
+  height: 55vh;
+  margin: 0 30px;
+}
+
+@media screen and (width <= 768px) {
+  .box {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    gap: 40px;
+    justify-content: center;
+  }
 }
 
 .footer {
-  position: absolute;
-  bottom: 10px;
-  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+  font-size: 0.8rem;
   color: #fff;
 }
 </style>
