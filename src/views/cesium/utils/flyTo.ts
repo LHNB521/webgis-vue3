@@ -2,9 +2,23 @@ import * as Cesium from 'cesium'
 import { useViewerStore, CesiumViewer } from '@/store'
 const viewerStore = useViewerStore()
 
+interface IFlyTo {
+  longitude: number
+  latitude: number
+  height: number
+}
 export default class flyTo {
   viewer: CesiumViewer['viewer']
-  constructor() {
+  longitude: number = 120.36
+  latitude: number = 36.09
+  height: number = 40000
+  constructor(props?: IFlyTo) {
+    if (props) {
+      this.longitude = props.longitude
+      this.latitude = props.latitude
+      this.height = props.height
+    }
+
     this.viewer = viewerStore.getViewer()
     if (this.viewer) {
       this.init()
@@ -15,7 +29,7 @@ export default class flyTo {
   init() {
     this.viewer.camera.flyTo({
       // 从以度为单位的经度和纬度值返回笛卡尔3位置。
-      destination: Cesium.Cartesian3.fromDegrees(120.36, 36.09, 40000),
+      destination: Cesium.Cartesian3.fromDegrees(this.longitude, this.latitude, this.height),
       orientation: {
         // heading：默认方向为正北，正角度为向东旋转，即水平旋转，也叫偏航角。
         // pitch：默认角度为-90，即朝向地面，正角度在平面之上，负角度为平面下，即上下旋转，也叫俯仰角。

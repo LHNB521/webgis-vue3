@@ -12,15 +12,6 @@
       <Card class="item" w="300px" h="300px" bg="#fff" route="/openlayers">
         <div class="card-content">openlayers</div>
       </Card>
-      <Card class="item" w="300px" h="300px" bg="#fff" route="/openlayers">
-        <div class="card-content">openlayers</div>
-      </Card>
-      <Card class="item" w="300px" h="300px" bg="#fff" route="/openlayers">
-        <div class="card-content">openlayers</div>
-      </Card>
-      <Card class="item" w="300px" h="300px" bg="#fff" route="/openlayers">
-        <div class="card-content">openlayers</div>
-      </Card>
     </div>
     <a href="https://beian.miit.gov.cn/#/" target="_blank" class="footer"> ICP主体备案号: 豫ICP备2021007222号 </a>
   </div>

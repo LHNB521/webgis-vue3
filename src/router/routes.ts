@@ -35,6 +35,19 @@ export const cesiumRoutes: any = [
       },
     ],
   },
+  {
+    path: '',
+    meta: { title: '颗粒' },
+    children: [
+      {
+        path: '/cesium/particle/index',
+        component: () => import('@/views/cesium/particle/index.vue'),
+        meta: {
+          title: '颗粒1',
+        },
+      },
+    ],
+  },
 ]
 
 // openLayers路由
