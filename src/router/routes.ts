@@ -61,6 +61,19 @@ export const cesiumRoutes: any = [
       },
     ],
   },
+  {
+    path: '',
+    meta: { title: '模型' },
+    children: [
+      {
+        path: '/cesium/model/index',
+        component: () => import('@/views/cesium/model/index.vue'),
+        meta: {
+          title: '模型1',
+        },
+      },
+    ],
+  },
 ]
 
 // openLayers路由
