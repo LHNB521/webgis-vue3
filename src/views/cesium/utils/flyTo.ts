@@ -3,8 +3,8 @@ import { useViewerStore, CesiumViewer } from '@/store'
 const viewerStore = useViewerStore()
 
 interface IFlyTo {
-  longitude: number
-  latitude: number
+  lon: number
+  lat: number
   height: number
 }
 export default class flyTo {
@@ -14,8 +14,8 @@ export default class flyTo {
   height: number = 40000
   constructor(props?: IFlyTo) {
     if (props) {
-      this.longitude = props.longitude
-      this.latitude = props.latitude
+      this.longitude = props.lon
+      this.latitude = props.lat
       this.height = props.height
     }
 

@@ -48,6 +48,19 @@ export const cesiumRoutes: any = [
       },
     ],
   },
+  {
+    path: '',
+    meta: { title: '打点' },
+    children: [
+      {
+        path: '/cesium/ponit/entitiesAdd/index',
+        component: () => import('@/views/cesium/ponit/entitiesAdd/index.vue'),
+        meta: {
+          title: '打点1',
+        },
+      },
+    ],
+  },
 ]
 
 // openLayers路由
