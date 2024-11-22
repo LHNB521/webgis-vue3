@@ -7,7 +7,10 @@ import SetZoom from '../utils/setZoom'
 
 // 初始化 ViewerStore
 const viewerStore = useViewerStore()
-
+const flightPath = [
+  { longitude: -115.0, latitude: 37.0, altitude: 10000 },
+  { longitude: 116.39125, latitude: 39.9075, altitude: 15000 },
+]
 /**
  * 添加 3D 模型到 Cesium 场景
  */
@@ -18,6 +21,48 @@ const addModel = async () => {
     console.error('Viewer 未初始化。请检查 ViewerStore 是否正确配置。')
     return
   }
+
+  // 创建路径插值
+  const positionProperty = new Cesium.SampledPositionProperty()
+  flightPath.forEach((point, index) => {
+    const time = Cesium.JulianDate.addSeconds(Cesium.JulianDate.now(), index * 10, new Cesium.JulianDate())
+    const position = Cesium.Cartesian3.fromDegrees(point.longitude, point.latitude, point.altitude)
+    positionProperty.addSample(time, position)
+  })
+
+  // 添加飞机模型
+  const airplaneEntity = viewer.entities.add({
+    position: positionProperty,
+    model: {
+      uri: '/feiji.glb', // 替换为飞机模型的路径
+      minimumPixelSize: 64,
+      scale: 100, // 调整模型大小
+    },
+    orientation: new Cesium.VelocityOrientationProperty(positionProperty),
+  })
+  // 调整时间轴以适配路径
+  viewer.clock.startTime = Cesium.JulianDate.now()
+  viewer.clock.stopTime = Cesium.JulianDate.addSeconds(
+    Cesium.JulianDate.now(),
+    flightPath.length * 10,
+    new Cesium.JulianDate(),
+  )
+  viewer.clock.shouldAnimate = true
+  viewer.clock.currentTime = viewer.clock.startTime
+  viewer.clock.multiplier = 0.009 // 时间倍速
+  viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP // 循环播放
+
+  // 聚焦到飞机
+  viewer.trackedEntity = airplaneEntity
+  viewer.entities.add({
+    polyline: {
+      positions: flightPath.map((point) =>
+        Cesium.Cartesian3.fromDegrees(point.longitude, point.latitude, point.altitude),
+      ),
+      width: 2,
+      material: Cesium.Color.YELLOW,
+    },
+  })
 
   try {
     // 定义模型的位置和属性
@@ -37,8 +82,8 @@ const addModel = async () => {
     viewer.scene.primitives.add(planeModel)
     console.log('模型已成功添加到场景！')
 
-    // 添加粒子系统（喷雾效果）
-    addTrailEffect(viewer, planeModel)
+    // // 添加粒子系统（喷雾效果）
+    // addTrailEffect(viewer, planeModel)
   } catch (error) {
     console.error('加载模型失败:', error)
   }
@@ -89,14 +134,37 @@ const addTrailEffect = (viewer: Cesium.Viewer, model: Cesium.Model) => {
   })
 }
 
+const setMao = () => {
+  const viewer = viewerStore.getViewer()
+
+  // 添加裁剪平面
+  const clippingPlanes = new Cesium.ClippingPlaneCollection({
+    planes: [
+      // 定义一个裁剪平面，位置和方向由 Cartesian3 控制
+      new Cesium.ClippingPlane(new Cesium.Cartesian3(0.0, 0.0, -1.0), 20.0), // 向下裁剪 20 米
+    ],
+    edgeWidth: 1.0, // 裁剪边缘宽度
+    edgeColor: Cesium.Color.RED, // 裁剪边缘颜色
+  })
+
+  // 将裁剪平面应用到地形
+  viewer.scene.globe.clippingPlanes = clippingPlanes
+
+  // 如果需要动态调整平面位置
+  const plane = clippingPlanes.get(0)
+  viewer.scene.postRender.addEventListener(() => {
+    plane.distance += 0.01 // 动态调整裁剪距离
+  })
+}
+
 /**
  * 页面初始化逻辑
  */
 nextTick(() => {
-  addModel() // 添加模型到场景
-
+  // setMao()
+  // addModel() // 添加模型到场景
   // 飞行到模型位置
-  new flyTo({ lon: 116.39125, lat: 39.9075, height: 40000 })
+  // new flyTo({ lon: -115.0, lat: 37.0, height: 40000 })
 })
 
 /**

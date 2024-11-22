@@ -1,11 +1,10 @@
 <script name="eye" setup lang="ts">
-import addEye from '../utils/addEye'
-const map = ref()
-nextTick(() => {
-  map.value = new addEye()
-})
-onBeforeUnmount(() => {
-  map.value.remove()
+import { useCesiumMapStore } from '@/store'
+
+const { getCesiumMap } = useCesiumMapStore()
+onMounted(() => {
+  const cesiumMap = getCesiumMap()
+  cesiumMap.eyeViewer.init('eye')
 })
 </script>
 <template>

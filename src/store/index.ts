@@ -8,5 +8,5 @@ export { store }
 export * from './modules/app'
 export * from './modules/user'
 export * from './modules/permission'
-export * from './modules/cesium/viewer'
+export * from './modules/cesium/cesiumMap'
 export * from './modules/openLayers/index'
