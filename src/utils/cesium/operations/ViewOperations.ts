@@ -24,7 +24,7 @@ class ViewOperations {
    */
   resetView() {
     this.viewer.camera.setView({
-      destination: Cesium.Cartesian3.fromDegrees(0, 0, 10000000),
+      destination: Cesium.Cartesian3.fromDegrees(0, 0, 20000000),
     })
   }
 }

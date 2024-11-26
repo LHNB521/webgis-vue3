@@ -3,7 +3,7 @@ import { EyeViewerOperations } from '@/utils/cesium/index'
 import { useCesiumMapStore } from '@/store'
 import Operation from '@/components/operation/index.vue'
 
-const { getCesiumMap, getViewer } = useCesiumMapStore()
+const { getViewer } = useCesiumMapStore()
 const visible = ref(false)
 let eyeViewer: any
 nextTick(() => {

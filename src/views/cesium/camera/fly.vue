@@ -15,7 +15,10 @@ const show = () => {
 const hide = () => {
   view.resetView()
 }
+onBeforeUnmount(() => {
+  view.resetView()
+})
 </script>
 <template>
-  <Operation @show="show" @hide="hide" />
+  <Operation show-name="飞入" hide-name="返回" @show="show" @hide="hide" />
 </template>

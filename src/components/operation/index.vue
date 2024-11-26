@@ -1,12 +1,23 @@
 <template>
   <div class="operation">
-    <button @click="show">显示</button>
-    <button @click="hide">隐藏</button>
+    <el-button @click="show">{{ showName }}</el-button>
+    <el-button @click="hide">{{ hideName }}</el-button>
     <slot></slot>
   </div>
 </template>
 
 <script setup lang="ts">
+defineProps({
+  showName: {
+    type: String,
+    default: '显示',
+  },
+  hideName: {
+    type: String,
+    default: '隐藏',
+  },
+})
+
 const emit = defineEmits(['show', 'hide'])
 const show = () => {
   emit('show')

@@ -1,10 +1,21 @@
 <script setup lang="ts">
-import Satellite from '../utils/satellite'
-const map = ref()
+import { Satellite } from '@/utils/cesium/index'
+import { useCesiumMapStore } from '@/store'
+const cesiumMapStore = useCesiumMapStore()
+let satellite: Satellite
 nextTick(() => {
-  map.value = new Satellite()
+  satellite = new Satellite(cesiumMapStore.getViewer())
 })
 onBeforeUnmount(() => {
-  map.value.remove()
+  satellite.remove()
 })
+const show = () => {
+  satellite.init()
+}
+const hide = () => {
+  satellite.remove()
+}
 </script>
+<template>
+  <Operation @show="show" @hide="hide" />
+</template>
