@@ -12,13 +12,12 @@ import CesiumMap from '@/utils/cesium/CesiumMap'
 import Layout from '@/layout/index.vue'
 import { useCesiumMapStore } from '@/store'
 
-const { setCesiumMap } = useCesiumMapStore()
+const { setCesiumMap, setViewer } = useCesiumMapStore()
 
 onMounted(() => {
   // 单例模式
   const cesiumMap = CesiumMap.getInstance('cesium-container')
-  // 状态管理
-  setCesiumMap(cesiumMap)
+  setViewer(cesiumMap.getViewer())
 
   // // 添加点
   // cesiumMap.points.addPoint([116.391, 39.907], 'Beijing')

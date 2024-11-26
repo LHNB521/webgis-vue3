@@ -1,11 +1,21 @@
 <script setup lang="ts">
-import flyTo from '../utils/flyTo'
-import SetZoom from '../utils/setZoom'
+import { useCesiumMapStore } from '@/store'
+import { ViewOperations } from '@/utils/cesium/index'
+const cesiumMap = useCesiumMapStore()
 
+let view: any
 nextTick(() => {
-  new flyTo()
+  view = new ViewOperations(cesiumMap.getViewer())
 })
-onBeforeUnmount(() => {
-  new SetZoom().flyTo()
-})
+onBeforeUnmount(() => {})
+
+const show = () => {
+  view.flyTo([113.945, 22.546, 500000])
+}
+const hide = () => {
+  view.resetView()
+}
 </script>
+<template>
+  <Operation @show="show" @hide="hide" />
+</template>

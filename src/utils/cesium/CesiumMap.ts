@@ -1,19 +1,10 @@
 import * as Cesium from 'cesium'
 import { cesiumOptions, cesiumToken } from './config'
 import { ImageryProviderOptions, skyBox } from './settings'
-import PointOperations from './operations/PointOperations'
-import ViewOperations from './operations/ViewOperations'
-import DataOperations from './operations/DataOperations'
-import EyeViewerOperations from './operations/EyeViewerOperations'
 
 class CesiumMap {
   private static instance: CesiumMap | null = null
   private viewer: Cesium.Viewer | null = null
-
-  public points!: PointOperations
-  public views!: ViewOperations
-  public data!: DataOperations
-  public eyeViewer!: EyeViewerOperations
 
   private constructor(containerId: string, options: Cesium.Viewer.ConstructorOptions = cesiumOptions) {
     if (!containerId) {
@@ -25,7 +16,6 @@ class CesiumMap {
     })
 
     this.initializeViewer()
-    this.initializeModules()
   }
 
   /**
@@ -45,16 +35,6 @@ class CesiumMap {
     this.setSkyBox()
     // 加载天地图影像
     this.addTianDiTu()
-  }
-  /**
-   * 初始化操作模块
-   */
-  private initializeModules() {
-    if (!this.viewer) return
-    this.points = new PointOperations(this.viewer)
-    this.views = new ViewOperations(this.viewer)
-    this.data = new DataOperations(this.viewer)
-    this.eyeViewer = new EyeViewerOperations(this.viewer)
   }
   /**
    * 加载全球地形数据

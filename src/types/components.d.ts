@@ -24,6 +24,7 @@ declare module 'vue' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     Loading: typeof import('./../components/loading/index.vue')['default']
+    Operation: typeof import('./../components/operation/index.vue')['default']
     Point: typeof import('./../components/point/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
