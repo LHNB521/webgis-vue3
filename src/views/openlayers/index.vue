@@ -1,25 +1,19 @@
 <template>
   <Layout>
-    <div id="openlayers" ref="openLayersRef"></div>
+    <div id="openlayers"></div>
   </Layout>
 </template>
 
 <script setup lang="ts">
 import Layout from '@/layout/index.vue'
-import olMap from '@/utils/openLayers'
-import { useMapStore } from '@/store'
-import onMapClick from '@/utils/openLayers/mapOn'
+import { useMap } from '@/utils/openLayers'
 
-const openLayersRef = ref<HTMLElement>()
-const mapStore = useMapStore()
+const map = useMap({})
+
+map.init()
 
 onMounted(() => {
-  const map = new olMap({
-    domId: openLayersRef.value,
-  }).initMap()
-
-  mapStore.setMap(map)
-  onMapClick(() => console.log('----'))
+  map.setTarget('openlayers')
 })
 </script>
 <style lang="scss" scoped>

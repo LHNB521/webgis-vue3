@@ -1,23 +1,19 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
+import { Map } from '@/utils/openLayers/config/import'
 
-export const useMapStore = defineStore('map', () => {
-  const map = ref<any>(null) // 地图对象
-  const tdtLayer = ref(null) // 天地图Layer
-  const viewer = ref(null) // 地图viewer
+export const useOlStore = defineStore('map', () => {
+  const map = shallowRef() // 地图对象
   // 设置地图
-  const setMap = (v: any) => {
+  const setMap = (v: Map) => {
     map.value = v
   }
-  // 销毁地图
-  const clearMap = () => {
-    map.value = null
+  const getMap = (): Map => {
+    return map.value
   }
+
   return {
-    map,
-    tdtLayer,
-    viewer,
     setMap,
-    clearMap,
+    getMap,
   }
 })

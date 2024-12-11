@@ -12,6 +12,7 @@ import VectorSource from 'ol/source/Vector'
 import { Draw } from 'ol/interaction'
 import { getLength as GetLength, getDistance, getArea } from 'ol/sphere'
 import GeoJson from 'ol/format/GeoJSON'
+import { getWidth, getTopLeft } from 'ol/extent'
 
 export {
   Map,
@@ -38,4 +39,6 @@ export {
   getArea,
   GeoJson,
   getProjection,
+  getWidth,
+  getTopLeft,
 }
