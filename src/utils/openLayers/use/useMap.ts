@@ -1,6 +1,8 @@
 import { View, defaults, Map } from '../config/import'
 import uselayers from './useLayers'
 import useStore from '../useStore'
+import useGeoJson from './useGeoJson'
+import china from '../config/china.json'
 
 interface Optinos {
   el?: string
@@ -14,7 +16,7 @@ interface Optinos {
 export const useMap = (options: Optinos) => {
   const { setMap, getMap } = useStore()
   const init = () => {
-    const { el, center = [116.4, 39.92], zoom = 13, minZoom = 7, maxZoom = 18, projection = 'EPSG:4326' } = options
+    const { el, center = [116.4, 39.92], zoom = 7, minZoom = 4, maxZoom = 18, projection = 'EPSG:4326' } = options
     const view = new View({
       projection,
       center,
@@ -48,9 +50,13 @@ export const useMap = (options: Optinos) => {
 
 const setLayer = (map: Map) => {
   const { createTdtLayer } = uselayers()
+  const { loadGeoJson } = useGeoJson()
   requestAnimationFrame(() => {
     const layer = createTdtLayer()
     map.addLayer(layer)
+    loadGeoJson({
+      geoJsonData: china,
+    })
   })
 }
 export default useMap
